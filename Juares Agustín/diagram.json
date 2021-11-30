@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 14.63,
+      "left": 83.17,
+      "attrs": { "env": "micropython-20210902-v1.17" }
+    },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": -62.98,
+      "left": -25.72,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -60.66,
+      "left": -167.34,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -54.66,
+      "left": -100,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 16,
+      "left": -56.01,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 28,
+      "left": -134.67,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -34.15, "left": 295.53, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -153.91,
+      "left": 173.33,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "ntc1:GND", "pico:GND.8", "black", [ "h0" ] ],
+    [ "ntc1:VCC", "pico:3V3", "red", [ "h0" ] ],
+    [ "ntc1:OUT", "pico:GP27", "green", [ "h0" ] ],
+    [ "r2:2", "pico:3V3", "red", [ "v0" ] ],
+    [ "r1:2", "pico:3V3", "red", [ "v0" ] ],
+    [ "led2:A", "r1:1", "green", [ "v0" ] ],
+    [ "led2:C", "pico:GP4", "green", [ "v0" ] ],
+    [ "led1:A", "r2:1", "green", [ "v0" ] ],
+    [ "led1:C", "pico:GP6", "green", [ "v0" ] ],
+    [ "pot1:GND", "pico:GND.6", "black", [ "v0" ] ],
+    [ "pico:GP26", "pot1:SIG", "green", [ "h0" ] ],
+    [ "pot1:VCC", "pico:3V3", "red", [ "v0" ] ],
+    [ "bz1:1", "pico:GND.8", "green", [ "v0" ] ],
+    [ "bz1:2", "pico:GP14", "green", [ "v0" ] ]
+  ]
+}
